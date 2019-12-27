@@ -82,8 +82,9 @@
 			messages.push(text)
 			document.getElementById("text").value = ""
 			$.ajax({
-				url : "/get_req",
-				type  : "GET"
+				url : "/send_and_receive",
+				type  : "POST",
+				data : {text : text}
 			}).done( res=>{
 				messages.push(res)
 

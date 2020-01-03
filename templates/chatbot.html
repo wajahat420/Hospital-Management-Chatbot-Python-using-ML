@@ -1,116 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-	<title>Document</title>
-	<style>
-		h1{
-
-			text-align:  center;
-			color: red;
-			margin: 10px;
-			/* padding: 0px 0px; */
-		}
-		.main{
-			/* text-align: center; */ 
-			margin: auto;
-			/* position: absolute; */
-			width: "100%";
-			/* background-color: aquamarine; */
-		}
-		.main > .message{
-			width: 900px;
-			margin: auto;
-			height: 600px; 
-			border: 2px solid black;
-			border-bottom: none;
-			overflow-y: scroll;
-			/* padding-bottom: 10px; */
-		}
-		.input  {
-			position: fixed;
-			/* width: 500px; */
-			left: 245px;
-			top: 670px;
-		}
-		.input input {
-			font-size: 1em;
-			padding: 5px;
-		}
-		.input input[type="text"] {
-			/* margin-left: 10px ; */
-			width: 735px !important;
-		}
-		.input input[type="button"] {
-			width: 150px !important;
-		}
-		.left , .right{
-			clear: both;
-			color: white;
-			padding: 2px;
-			display: block;
-			width: 700px;
-		}
-		.right {
-			float: right;
-		}
-		.left > * , .right > *{
-			border-radius: 20px;
-			margin: 1px;
-			padding: 3px 10px;
-			clear: both;
-		}
-		.left > *{
-			float: left;
-			background-color : blue;
-		}
-		.right > *{
-			float: right;
-			background-color : red
-		}
-	</style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+	<script src="{{url_for('static',filename='script.js')}}"></script>
+   
+	 <title>Health Care Bot</title>
+     
 </head>
-<body>
-	<script>
-		var messages = []
-		function myFunction() {
-			var text = $('#text').val()
-			messages.push(text)
-			document.getElementById("text").value = ""
-			$.ajax({
-				url : "/send_and_receive",
-				type  : "POST",
-				data : {text : text}
-			}).done( res=>{
-				messages.push(res)
-
-				for(i=messages.length-2;i<messages.length;i++){
-					if(i%2 == 0){
-						var html = "<div class='left'>	<div>" +messages[i]+"</div>+	</div>"
-						$(".message").append(html)
-					}else{
-						var html = "<div class='right'>	<div>" +messages[i]+"</div>+	</div>"
-						$(".message").append(html)
-					}
-				}	
-			})
-		}
-	</script>
-	<h1>Hospital Management Chatbot</h1>
-	
-
-	<div class="main">
-		<div class="message">
-		</div>
-		<div class="input">
-			<input id="text" type="text"/>
-			<input type="button" onclick="myFunction()"value="send"/>
-		</div>
-	</div>
-
-</body>
+  <body>
+    <h1>Health Care Bot</h1>
+    <div class="main">
+      <div class="message"></div>
+      <div class="input">
+        <input id="text" type="text" />
+        <input
+          type="submit"
+          class="button"
+          onclick="myFunction()"
+          value="send"
+        />
+      </div>
+    </div>
+  </body>
 </html>

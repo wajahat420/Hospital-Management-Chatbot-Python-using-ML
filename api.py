@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template,jsonify
 app = Flask(__name__)
 
+
+
 def do_something(text1,text2):
    print("hello")
    text1 = text1.upper()
@@ -200,4 +202,4 @@ def chat(user_input):
 
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port = 5050)

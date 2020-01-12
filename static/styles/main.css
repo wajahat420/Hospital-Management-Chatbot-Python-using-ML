@@ -1,0 +1,88 @@
+body {
+  background-color: #212121;
+}
+h1 {
+  text-align: center;
+  color: rgb(170, 169, 169);
+  margin: 10px;
+  padding: 10px;
+  /* padding: 0px 0px; */
+}
+.main {
+  /* text-align: center; */
+  margin: 0;
+  /* position: absolute; */
+  width: "100%";
+  /* background-color: aquamarine; */
+}
+.main > .message {
+  width: 900px;
+  margin: auto;
+  height: 500px;
+  border: 2px solid rgba(68, 68, 68, 0.18);
+  border-radius: 7px;
+  box-shadow: 0px 3px 20px 4px rgba(0, 0, 0, 0.18);
+  border-bottom: none;
+  /* padding-bottom: 10px; */
+}
+.message {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+.message::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.input {
+  /* width: 500px; */
+  padding: 10px;
+  margin-left: 250px;
+}
+.input input {
+  font-size: 1em;
+  padding: 5px;
+  border-radius: 3px;
+}
+.input input[type="text"] {
+  /* margin-left: 10px ; */
+  width: 735px !important;
+}
+.input input[type="button"] {
+  width: 150px !important;
+}
+.button {
+  background-color: #c7444f;
+  color: #212121;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px;
+  border-color: #c7444f;
+}
+.left,
+.right {
+  clear: both;
+  color: white;
+  padding: 6px;
+  display: block;
+  width: 700px;
+}
+.right {
+  float: right;
+}
+.left > *,
+.right > * {
+  border-radius: 10px;
+  margin: 1px;
+  padding: 10px 10px;
+  clear: both;
+}
+.left > * {
+  float: left;
+  background-color: #c7444f;
+}
+.right > * {
+  float: right;
+  background-color: rgb(15, 15, 15);
+}

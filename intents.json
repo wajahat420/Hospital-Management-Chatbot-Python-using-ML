@@ -1,0 +1,56 @@
+{"intents" :  [
+	{"tag": "greeting",
+	"patterns": [ "Hi","hey", "How are you", "Is anyone there?","assalam-o-alaikum","salam", "Hello", "Good day", "Whats up"],
+	"responses": [ "Hello!", "Good to see you again!", "Hi there, how can I help?"]
+	},
+		   
+	{"tag": "goodbye",
+	"patterns": [ "cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day","allahafiz","allah hafiz","khuda hafiz","khudahafiz","Ok, talk to you later"],
+	"responses": [ "Sad to see you go :(", "Talk to you later", "Goodbye!"]
+	},
+	{"tag": "name",
+	"patterns": [ "what is your name", "what should I call you", "what's your name?","what is your good name"],
+	"responses": [ "You can call me SAW", "I'm SAW", "I'm SAW"]
+	},
+	{"tag": "closing",
+	"patterns": [ "what is the closing timing of hospital?","at what time it will be closed?"],
+	 "responses": [ "It's open 24 hours.","It's open 24/7","It's open every time"]
+	},
+	{
+	"tag" : "opening",
+	"patterns" : [ "at what time the hospital will open?","what is the opening time of hospital?","is is open 24/7?","is it open day and night?","is it open in late night?","is it open after 12?","what is the opening timing of a hospital?","when will it be open?"],
+	 "responses": [ "It's open 24 hours.","It's open 24/7","It's open every time"]
+	},
+  {"tag": "asking_doctor_and_timings",
+   "patterns" : ["what is the time at which doctor operate","what is the operating time of doctor","give me the doctor timings","give me the list of doctors","please provide me doctor schedule","timings for doctor are?","what are doctor timings","when will doctor sit", "is here any doctor sit?","Does any doctor sit here","when will doctor sit","i want to know that which dotor sit here","tell me the type of doctor sit here","which doctor sit in tjhe evening","doctor which sit in the morning","does here is any doctor which sit in the afternoon time","what is the timings for the doctor which sit here","please provide me the list and timings of doctors","please give me the list of doctors which sit here","what type of doctor sit here","i want to know doctor and their timings of sitting here","provide me the scedule of doctor and timings","plese, provide me the timings of dcotors"],
+  "responses": [ "Doctor which sit here are as follow along with its timings: \n * General Physician(9-2)pm \n * Neurologist(2-5)pm * Psychiatrist(3-10)pm"]
+  },
+	{
+	"tag" : "running_number",
+	"patterns" : ["tell me the current number","which number is now", "what is the current number which is operating by doctor","which number is now","please provide me the current status of number","what is the number which is running now","which number is currently operating"],
+	 "responses" : [ "Current running number is 202"]
+   },
+   {
+    "tag" : "doctor_appointment",
+    "patterns" : [ "i want to take an appointment.","i want to take timings.","i want to book timings","i want to reserve slot","i want to book appointment","i want to take appointment please guide","please book my slot","i want to take number","i want to reserve my timings for doctor","what is the current number which is operating by doctor","which number is now","please provide me the current status of number",""],
+	  "responses" : [ "Appointment timings are 4pm-9pm","The available timings are 4pm-9pm"]
+	},
+	{
+	"tag" : "meet_patient",
+	"patterns" : ["what are the visiting hours?","please tell me visiting hours for meeting patient","what are the hours for visting patient", "i want to meet patient","i want to meet my uncle","what is the timings for meeting patient","what is the timings for visiting patient?","what is the meeting time for the patient","when we can meet patient?","i want to meet my mother","what is the visiting time for the patient","what is the time for visit"],
+	"responses" : [ "You may meet from 12pm-4pm","Yes, you can meet him from 12pm-4pm"]
+  },
+{
+  "tag" : "people_allowed",
+  "patterns" : ["maximum people that are allowed in the room are","how many people are allowed to visit","how many of us can go in the room of patient","how many people are allowed to visit patient","maximum people are allowed are to go inside room?","how many can go inside the room of patient to visit","are children allowed in the patient's room","what is the maximum afe of child to visit patient"],
+  "responses" : ["People allowed to go inside the room are only two","Only two can go inside the room"]
+  },
+	{
+	"tag" : "patient_room",
+	"patterns" : [ "tell me his room?","on which floor?","left or right?","room number?","room no?","which corridor?"],
+	"responses" : [ "Yes you may meet him upstairs 2nd floor 3rd room to the left"]
+	}
+ 
+
+  ]
+}

@@ -21,7 +21,7 @@ model = Sequential()
 
 try:
     
-    with open("data.pickle", "rb") as f:
+    with open("dataaa.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
     print("try")
         
@@ -71,26 +71,26 @@ except:
     training = numpy.array(training)
     output = numpy.array(output)
 
-    with open("data.pickle", "wb") as f:
-        pickle.dump((words, labels, training, output), f)
+    # with open("data.pickle", "wb") as f:
+    #     pickle.dump((words, labels, training, output), f)
     
 try:
     print("try-2")
-    model.load("model.tflearn")
+    model.load("model.tflearnnn")
 except:
     print("except-2")
     model = Sequential()
-    model.add(layers.Dense(10, activation='relu'))
+    model.add(layers.Dense(len(training[0]), activation='relu'))
     model.add(layers.Dense(10, activation='relu'))
     # model.add(layers.Dense(8, activation='relu'))
-    model.add(layers.Dense(len(output[0]), activation=''))
+    model.add(layers.Dense(len(output[0]), activation='softmax'))
     
     model.compile(optimizer='adam',
                   loss='binary_crossentropy',
                   metrics=['accuracy'])
-    model.fit(array(training), array(output), batch_size=8, epochs = 400,verbose = 1)
+    model.fit(array(training), array(output), batch_size=8, epochs = 300,verbose = 0)
     model.save("model.tflearn")
-    print("training",len(training[0]),len(words))
+    # print("training",len(training[0]),len(words))
 
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
@@ -107,42 +107,55 @@ def bag_of_words(s, words):
     return numpy.array(bag)
 
 
-def chat(user_input):
+def chat():
+	while True:
+		user_input = input("\nWhat you want to ask: ")
+		inp = user_input
+		bag = array([bag_of_words(user_input, words)])
+		check_bag = len(list(set(bag[0])))
+		
+		# print("bag",bag)
+		results = model.predict(bag)
+		results_index = numpy.argmax(results)
+		tag = labels[results_index]
+		max_ = max(results[0])
 
-    inp = user_input
-    bag = array([bag_of_words(user_input, words)])
-    check_bag = len(list(set(bag[0])))
+		if check_bag == 1:
+				print ("Please Right Correctly")
+		elif max_ * 100 < 30:
+			print( "i am unable to answer it, Please ask something else" + str(max_))
 
-    # print("bag",bag)
-    results = model.predict(bag)
-    results_index = numpy.argmax(results)
-    tag = labels[results_index]
-    max_ = max(results[0])
+		for tg in data["intents"]:
+			if tg['tag'] == tag:
+				responses = tg['responses']
+				# print("inside for",responses)
 
-    if check_bag == 1:
-         return "Please Right Correctly"
-    elif max_ * 100 < 30:
-        return "i am unable to answer it, Please ask something else" + str(max_)
-    
-    for tg in data["intents"]:
-        if tg['tag'] == tag:
-            responses = tg['responses']
-            print("inside for",responses)
+		print("\ntag = ",tag," prediction = ",max_)
+		# print("responses",responses)
+		# print("prediction",results)
+		counter = 0
+		for i in results[0]:
+			counter += i
+		# print("counter = ",counter,"\n")
+		sentence_ = [w.lower() for w in inp.split()]
+		# print("sentence",sentence_)
+		if (not tag ==  "greeting-1") and (not tag ==  "greeting-2") and (not tag == "goodbye") and (len(inp.split()) == 1):
+			print( "Please elaborate your sentence.")
+		elif (tag == "doctor_appointment") and ("appointment" not in sentence_ ):
+			print( "If you are talking about to take an appointment then please use 'Appointment' keyword in your sentence"    )
+		elif tag == "asking_doctor_and_timings":
+			if "general" in sentence_ or "physician" in sentence_:
+				print("General phyhician Timings are 2-4pm")
+			elif "neurologist" in sentence_:
+				print("Neurologist Timings are 5-9pm")
+			elif "psychiatrist" in sentence_:
+				print("psychiatrist timings are 4-6pm")
 
-    print("tag = ",tag," prediction = ",max_)
-    print("responses",responses)
 
-    if (not tag ==  "greeting-1") and (not tag ==  "greeting-2") and (not tag == "goodbye") and (len(inp.split()) == 1):
-        return "Please elaborate your sentence."
+		else:
+			print(random.choice(responses)+ " p=" + str(max_))
 
-    elif tag == "doctor_appointment":
-        sentence_ = [w.lower() for w in inp.split()]
-        # print("sentence",sentence_)
-        if "appointment" not in sentence_:
-            return "If you are talking about to take an appointment then please use 'Appointment' keyword in your sentence"    
-        
-    return random.choice(responses)+ " p=" + str(max_)
 
-    
+chat()  
 #if __name__ == '__main__':
  #   app.run(debug=True, port = 5050)

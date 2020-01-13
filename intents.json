@@ -1,8 +1,12 @@
 {"intents" :  [
-	{"tag": "greeting",
+	{"tag": "greeting-1",
 	"patterns": [ "Hi","hey", "How are you", "Is anyone there?","assalam-o-alaikum","salam", "Hello", "Good day", "Whats up"],
 	"responses": [ "Hello!", "Good to see you again!", "Hi there, how can I help?"]
-	},
+  },
+  {"tag": "greeting-2",
+    "patterns": [ "assalam-o-alaikum","salam","walaikum assalam","walaikum salam","w.salam"],
+    "responses": [ "Hello!", "Good to see you again!", "Hi there, how can I help?"]
+  },
 		   
 	{"tag": "goodbye",
 	"patterns": [ "cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day","allahafiz","allah hafiz","khuda hafiz","khudahafiz","Ok, talk to you later"],
@@ -22,8 +26,8 @@
 	 "responses": [ "It's open 24 hours.","It's open 24/7","It's open every time"]
 	},
   {"tag": "asking_doctor_and_timings",
-   "patterns" : ["what is the time at which doctor operate","what is the operating time of doctor","give me the doctor timings","give me the list of doctors","please provide me doctor schedule","timings for doctor are?","what are doctor timings","when will doctor sit", "is here any doctor sit?","Does any doctor sit here","when will doctor sit","i want to know that which dotor sit here","tell me the type of doctor sit here","which doctor sit in tjhe evening","doctor which sit in the morning","does here is any doctor which sit in the afternoon time","what is the timings for the doctor which sit here","please provide me the list and timings of doctors","please give me the list of doctors which sit here","what type of doctor sit here","i want to know doctor and their timings of sitting here","provide me the scedule of doctor and timings","plese, provide me the timings of dcotors"],
-  "responses": [ "Doctor which sit here are as follow along with its timings: \n * General Physician(9-2)pm \n * Neurologist(2-5)pm * Psychiatrist(3-10)pm"]
+   "patterns" : ["please give me the schedule","what are the timings of doctor","i want to know the doctor timings","i want to ask about doctor","what is the time at which doctor operate","what is the operating time of doctor","give me the doctor timings","give me the list of doctors","please provide me doctor schedule","timings for doctor are?","what are doctor timings","when will doctor sit", "is here any doctor sit?","Does any doctor sit here","when will doctor sit","i want to know that which dotor sit here","tell me the type of doctor sit here","which doctor sit in tjhe evening","doctor which sit in the morning","does here is any doctor which sit in the afternoon time","what is the timings for the doctor which sit here","please provide me the list and timings of doctors","please give me the list of doctors which sit here","what type of doctor sit here","i want to know doctor and their timings of sitting here","provide me the scedule of doctor and timings","plese, provide me the timings of dcotors"],
+  "responses": [ "Doctor which sit here are as follow along with its timings: \n * General Physician(9-2)pm \n * Neurologist(2-5)pm \n   * Psychiatrist(3-10)pm"]
   },
 	{
 	"tag" : "running_number",
@@ -32,7 +36,7 @@
    },
    {
     "tag" : "doctor_appointment",
-    "patterns" : [ "i want to take an appointment.","i want to take timings.","i want to book timings","i want to reserve slot","i want to book appointment","i want to take appointment please guide","please book my slot","i want to take number","i want to reserve my timings for doctor","what is the current number which is operating by doctor","which number is now","please provide me the current status of number",""],
+    "patterns" : ["i want to confirm my appointment", "i want to take an appointment.","i want to take timings.","i want to book timings","i want to reserve slot","i want to book appointment","i want to take appointment please guide","please book my slot","i want to take number","i want to reserve my timings for doctor","what is the current number which is operating by doctor","which number is now","please provide me the current status of number",""],
 	  "responses" : [ "Appointment timings are 4pm-9pm","The available timings are 4pm-9pm"]
 	},
 	{
@@ -42,7 +46,7 @@
   },
 {
   "tag" : "people_allowed",
-  "patterns" : ["maximum people that are allowed in the room are","how many people are allowed to visit","how many of us can go in the room of patient","how many people are allowed to visit patient","maximum people are allowed are to go inside room?","how many can go inside the room of patient to visit","are children allowed in the patient's room","what is the maximum afe of child to visit patient"],
+  "patterns" : ["how many can go inside","how any can go inside patient's room","maximum people that are allowed in the room are","how many people are allowed to visit","how many of us can go in the room of patient","how many people are allowed to visit patient","maximum people are allowed are to go inside room?","how many can go inside the room of patient to visit","are children allowed in the patient's room","what is the maximum afe of child to visit patient"],
   "responses" : ["People allowed to go inside the room are only two","Only two can go inside the room"]
   },
 	{

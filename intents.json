@@ -1,11 +1,11 @@
 {"intents" :  [
 	{"tag": "greeting-1",
-	"patterns": [ "Hi","hey", "How are you", "Is anyone there?","assalam-o-alaikum","salam", "Hello", "Good day", "Whats up"],
+	"patterns": [ "Hi","hey", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up"],
 	"responses": [ "Hello!", "Good to see you again!", "Hi there, how can I help?"]
   },
   {"tag": "greeting-2",
     "patterns": [ "assalam-o-alaikum","salam","walaikum assalam","walaikum salam","w.salam"],
-    "responses": [ "Hello!", "Good to see you again!", "Hi there, how can I help?"]
+    "responses": [ "W.salm, How may I help you?"]
   },
 		   
 	{"tag": "goodbye",
@@ -35,10 +35,20 @@
 	 "responses" : [ "Current running number is 202"]
    },
    {
-    "tag" : "doctor_appointment",
-    "patterns" : ["i want to confirm my appointment", "i want to take an appointment.","i want to take timings.","i want to book timings","i want to reserve slot","i want to book appointment","i want to take appointment please guide","please book my slot","i want to take number","i want to reserve my timings for doctor","what is the current number which is operating by doctor","which number is now","please provide me the current status of number",""],
-	  "responses" : [ "Appointment timings are 4pm-9pm","The available timings are 4pm-9pm"]
-	},
+    "tag" : "waiting_time",
+    "patterns" : ["how much time i have to wait for the number","when will my number come","when will my turn come","how much time i have to wait for my turn","how many hours i have to wait ","tell me the time from now for which i have to wait for it","tell me when my turn will come","please guide me about when my turn will come","when will i get my turn","please do favour and tell me the remaining time from now","tell me remaining time"],
+     "responses" : [ "Dear User, The current number running is 100 your turn will come in an hour.","Sir, you have to wait only one hour"]
+     },
+   {
+    "tag" : "doctor_appointment_asking",
+    "patterns" : ["give me appointment","ok now tell me about appointment","i want to confirm my appointment", "i want to take an appointment.","i want to take timings.","i want to book timings","i want to reserve slot","i want to book appointment","i want to take appointment please guide","please book my slot","i want to take number","i want to reserve my timings for doctor","what is the current number which is operating by doctor","which number is now","please provide me the current status of number"],
+	  "responses" : [ "Do you want to confirm ?","Are you sure, confirm it?"]
+  },
+  {
+    "tag" : "doctor_appointment_reject",
+    "patterns" : ["i want to reject my confirmed number","are we able to dismiss our number","i want to cancle my appointment","please cancle my appointment","i don't want to take an appointment please cancle it","is there any way to cancle an appointment","i don't want to confirm my appointment","please dont't confirm it cancle my appointment","i had confirmed by mistake can you please cancle it","the appointment that i have confirmed i want to reject that","please reject the confirmed appointment","may i cancle my appointment","please give me one favour can you cancle my appointment"],
+	  "responses" : [ "No problem sir, you appointment is cancelled. Do you want to know something else?"]
+  },
 	{
 	"tag" : "meet_patient",
 	"patterns" : ["what are the visiting hours?","please tell me visiting hours for meeting patient","what are the hours for visting patient", "i want to meet patient","i want to meet my uncle","what is the timings for meeting patient","what is the timings for visiting patient?","what is the meeting time for the patient","when we can meet patient?","i want to meet my mother","what is the visiting time for the patient","what is the time for visit"],
@@ -46,7 +56,7 @@
   },
 {
   "tag" : "people_allowed",
-  "patterns" : ["how many can go inside","how any can go inside patient's room","maximum people that are allowed in the room are","how many people are allowed to visit","how many of us can go in the room of patient","how many people are allowed to visit patient","maximum people are allowed are to go inside room?","how many can go inside the room of patient to visit","are children allowed in the patient's room","what is the maximum afe of child to visit patient"],
+  "patterns" : ["children can come","how many can go inside","how any can go inside patient's room","maximum people that are allowed in the room are","how many people are allowed to visit","how many of us can go in the room of patient","how many people are allowed to visit patient","maximum people are allowed are to go inside room?","how many can go inside the room of patient to visit","are children allowed in the patient's room","what is the maximum age of child to visit patient"],
   "responses" : ["People allowed to go inside the room are only two","Only two can go inside the room"]
   },
 	{
@@ -56,5 +66,7 @@
 	}
  
 
-  ]
+  ],
+  "doctor-appointment-1": ["Your Appointment is confirmed, Your time is at 4pm"]
+
 }

@@ -81,30 +81,44 @@
 	
     <script >
     var messages = [];
-	var start = "Assalam-0-alaikum Sir, How may I help you?"
-	messages.push(start)
-	var html = "<div class='right'>	<div> " + messages[0] + " </div>	</div>";
-	$(".message").append(html);
+	// var start = "Assalam-0-alaikum Sir, How may I help you?"
+	// messages.push(start)
+	// var html = "";
+	// $(".message").append(html);
 
-    function myFunction() {
-      var text = $("#text").val();
-      messages.push(text);
-      document.getElementById("text").value = "";
-      $.ajax({
-        url: "/send_and_receive",
-        type: "POST",
-        data: { text: text }
-      }).done((res) => {
-        messages.push(res);
-        for (i = messages.length - 2; i < messages.length; i++) {
-          if (i % 2 == 1) {
-            var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
-          } else {
-            var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
-          }
-        $(".message").append(html);
-        }
-      });
+	function a(){
+		console.log("hello")
+		console.log("hello")
+
+	}
+
+     function  myFunction() {
+		// await sleep(3000);
+		// e.preventDefault()
+		// print("e",e)
+		console.log("hello")
+
+		// await sleep(3000);
+
+
+		var text = $("#text").val();
+		messages.push(text);
+		document.getElementById("text").value = "";
+		$.ajax({
+		url: "/send_and_receive",
+		type: "POST",
+		data: { text: text }
+		}).done((res) => {
+		messages.push(res);
+		for (i = messages.length - 2; i < messages.length; i++) {
+			if (i % 2 == 1) {
+			var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
+			} else {
+			var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
+			}
+		$(".message").append(html);
+		}
+		});
     }
      </script>
 	 <title>Health Care Bot</title>
@@ -113,15 +127,18 @@
   <body>
     <h1>Health Care Bot</h1>
     <div class="main">
-      <div class="message"></div>
+      <div class="message">
+		<div class='left'> 	<div> Assalam-0-alaikum Sir, How may I help you?  </div>	</div>
+	  </div>
       <div class="input">
-        <input id="text" type="text" />
-        <input
-          type="submit"
-          class="button"
-          onclick="myFunction()"
-          value="send"
-        />
+		  <form  onsubmit="myFunction();return false">
+			  <input id="text" type="text" />
+			  <input 
+				type="submit"
+				class="button"
+				value="send"
+			  />
+		  </form>
       </div>
     </div>
   </body>

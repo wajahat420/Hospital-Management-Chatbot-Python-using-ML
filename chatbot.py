@@ -16,11 +16,12 @@ from numpy import array
 import numpy
 import pickle
 from keras import layers
+from functions import *
 
 model = Sequential()
+tags_history = []
 
-try:
-    
+try:    
     with open("data.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
     print("try")
@@ -37,6 +38,7 @@ except:
             
             # stop_words = set(stopwords.words('english')) 
             wrds = nltk.word_tokenize(pattern)
+            wrds  = remove_stopwords(wrds)
             # wrds = [w for w in wrds if w not in stop_words] 
             words.extend(wrds)
             docs_x.append(wrds)
@@ -48,7 +50,9 @@ except:
     words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = set(words)
     words = list(words)
-    # print(words)
+    print("before",len(words))
+    words = remove_stopwords(words)
+    print("after",len(words))
     # print("length == ",len(words))
     labels = sorted(labels)
     training = []
@@ -80,17 +84,18 @@ try:
 except:
     print("except-2")
     model = Sequential()
-    model.add(layers.Dense(10, activation='relu'))
-    model.add(layers.Dense(10, activation='relu'))
+    model.add(layers.Dense(len(training[0])))
+    model.add(layers.Dense(10))
     # model.add(layers.Dense(8, activation='relu'))
-    model.add(layers.Dense(len(output[0]), activation=''))
+    model.add(layers.Dense(len(output[0]), activation='sigmoid'))
     
     model.compile(optimizer='adam',
                   loss='binary_crossentropy',
                   metrics=['accuracy'])
-    model.fit(array(training), array(output), batch_size=8, epochs = 400,verbose = 1)
+    model.fit(array(training), array(output), batch_size=8, epochs = 300,verbose = 0)
     model.save("model.tflearn")
-    print("training",len(training[0]),len(words))
+    # print("training",len(training[0]),len(words))
+
 
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
@@ -108,11 +113,10 @@ def bag_of_words(s, words):
 
 
 def chat(user_input):
-
     inp = user_input
     bag = array([bag_of_words(user_input, words)])
     check_bag = len(list(set(bag[0])))
-
+    
     # print("bag",bag)
     results = model.predict(bag)
     results_index = numpy.argmax(results)
@@ -120,29 +124,38 @@ def chat(user_input):
     max_ = max(results[0])
 
     if check_bag == 1:
-         return "Please Right Correctly"
+            return ("Please Right Correctly")
     elif max_ * 100 < 30:
-        return "i am unable to answer it, Please ask something else" + str(max_)
-    
+        return( "i am unable to answer it, Please ask something else" + str(max_))
+
     for tg in data["intents"]:
         if tg['tag'] == tag:
             responses = tg['responses']
-            print("inside for",responses)
 
-    print("tag = ",tag," prediction = ",max_)
-    print("responses",responses)
+    print("\ntag = ",tag," prediction = ",max_)
+  
+    # counter = 0
+    # for i in results[0]:
+    #     counter += i
+    # print("\ncounter = ",counter,"\n")
+    sentence_ = [w.lower() for w in inp.split()]
 
-    if (not tag ==  "greeting-1") and (not tag ==  "greeting-2") and (not tag == "goodbye") and (len(inp.split()) == 1):
-        return "Please elaborate your sentence."
+    # if (not tag ==  "greeting-1") and (not tag ==  "greeting-2") and (not tag == "goodbye") and (len(inp.split()) == 1):
+    #     return( "Please elaborate your sentence.")
 
-    elif tag == "doctor_appointment":
-        sentence_ = [w.lower() for w in inp.split()]
-        # print("sentence",sentence_)
-        if "appointment" not in sentence_:
-            return "If you are talking about to take an appointment then please use 'Appointment' keyword in your sentence"    
-        
-    return random.choice(responses)+ " p=" + str(max_)
+    # if (tag == "doctor_appointment") and ("appointment" not in sentence_ ):
+    #     return( "If you are talking about to take an appointment then please use 'Appointment' keyword in your sentence"    )
 
+    if tag == "asking_doctor_and_timings":
+        if "general" in sentence_ or "physician" in sentence_:
+            return("General phyhician Timings are 2-4pm")
+        elif "neurologist" in sentence_:
+            return("Neurologist Timings are 5-9pm")
+        elif "psychiatrist" in sentence_:
+            return("psychiatrist timings are 4-6pm")
     
+    return(random.choice(responses)+ " p=" + str(max_))
+
+
 #if __name__ == '__main__':
  #   app.run(debug=True, port = 5050)

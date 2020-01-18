@@ -1,23 +1,24 @@
 var messages = [];
-function myFunction() {
+
+function  myFunction() {
   var text = $("#text").val();
   messages.push(text);
   document.getElementById("text").value = "";
   $.ajax({
-    url: "/send_and_receive",
-    type: "POST",
-    data: { text: text }
+  url: "/send_and_receive",
+  type: "POST",
+  data: { text: text }
   }).done((res) => {
-    messages.push(res);
-    for (i = messages.length - 2; i < messages.length; i++) {
-      if (i % 2 == 0) {
-        var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
-      } else {
-        var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
-      }
-    $(".message").append(html);
+  messages.push(res);
+  for (i = messages.length - 2; i < messages.length; i++) {
+    if (i % 2 == 1) {
+    var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
+    } else {
+    var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
     }
+  $(".message").append(html);
+  }
   });
-}
+  }
 
-<script src="{{url_for('static',filename='script.js')}}"></script>  
+

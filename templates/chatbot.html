@@ -4,227 +4,110 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<title>Chatbot</title>
 
-	<title>Document</title>
-	<style>
-		body{
-			background-color: rgb(98, 98, 163) !important;
-		}
-		h1{
-			/* position: absolute; */
-			/* display: inline-block; */
-			text-align:  center;
-			color: red;
-			margin: 10px;
-			/* padding: 0px 0px; */
-		}
-		.main{
-			/* text-align: center; */
-			margin-left: 60px;
-			width: 44%;
-			float: left;
-			/* margin-left: 60px; */
-		}
-		.main > .message{
-			/* width: 900px; */
-			/* margin: auto; */
-			overflow-x: hidden;
-			height: 600px; 
-			border-bottom: none;
-			overflow-y: scroll;
-			box-shadow: 0px 3px 20px 4px rgba(0, 0, 0, 0.18);
-			border: 2px solid rgba(68, 68, 68, 0.18);
-			border-radius: 7px;
-		}
-
-		input {
-			font-size: 1em;
-		}
-
-		.left , .right{
-			clear: both;
-			color: white;
-			padding: 2px;
-			display: block;
-			width: 520px;
-		}
-		.right {
-			float: right;
-		}
-		.left > * , .right > *{
-			border-radius: 20px;
-			margin: 1px;
-			padding: 3px 10px;
-			clear: both;
-		}
-		.left > *{
-			float: left;
-			background-color : #c7444f;
-		}
-		.right > *{
-			float: right;
-			background-color : rgb(42, 37, 37)
-		}
-		form > div{
-			display: inline-block;
-		}
-		.btn-div{
-			float: right;
-		}
-		.side-left, .side-right,.main{
-			display: inline-block;
-		}
-		.side-left, .side-right{
-			background-color: rgba(79, 39, 189, 0.924) ;
-			height:800px;
-			
-		}
-		.side-right{
-			color: rgb(212, 211, 211);
-			float: right;
-		}
-		.side-left{
-			float: left;
-		}
-		.list-group,.side-right > div{
-			margin-top: 50px;
-		}
-		.active{
-			border: none !important;
-		}
-		.list-group-item:hover{
-			cursor: pointer !important;
-			background-color: rgba(0, 0, 0, 0.192) !important;
-		}
-		.list-group-item > a{
-			width: 100%;
-			height: 20px;
-			/* padding: 100px !important; */
-			background-color:  rgba(187, 187, 187, 0) !important;
-		}
-		.list-group-item{
-			/* padding: 0px !important; */
-			background-color:  rgba(187, 187, 187, 0) !important;
-		}
-		h4{
-			cursor: pointer;
-		}
-	</style>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"> -->
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+	<script src="{{url_for('static',filename='script.js')}}"></script>
+	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script >
-
-	// $.ajax("http://127.0.0.1:5050/doctors", {
-	// 	type: 'GET'
-	// })
-	// $.ajax({
-	// 	url: "/doctors",
-	// 	type: "GET",
-	// })
-	var messages = [];
-
-	function  myFunction() {
-		var text = $("#text").val();
-		messages.push(text);
-		document.getElementById("text").value = "";
-		$.ajax({
-		url: "/send_and_receive",
-		type: "POST",
-		data: { text: text }
-		}).done((res) => {
-		messages.push(res);
-		for (i = messages.length - 2; i < messages.length; i++) {
-			if (i % 2 == 1) {
-			var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
-			} else {
-			var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
-			}
-		$(".message").append(html);
-		}
-		});
-    }
+	<script>
 	function showDetails(item){
 		item1 = document.getElementById("h4-1")
 		item2 = document.getElementById("h4-2")
 		item3 = document.getElementById("h4-3")
+		console.log("className"+item1.className)
 		if (item == 1){
+			if (item1.className == ""){
+			item1.className  = "d-none"
+			}else{
 			item1.className  = ""
 			item2.className  = "d-none"
 			item3.className  = "d-none"
+			}
 		}else if ( item == 2){
+			if (item2.className == ""){
+			item2.className  = "d-none"
+			}else{
 			item1.className  = "d-none"
 			item2.className  = ""
 			item3.className  = "d-none"
+			}
 		}else{
+			if (item3.className == ""){
+			item3.className  = "d-none"
+			}else{
 			item1.className  = "d-none"
 			item2.className  = "d-none"
 			item3.className  = ""
+			}
 		}
 	}
-	function redirect(page){
-
-		const Http = new XMLHttpRequest();
-		const url='/doctors';
-		Http.open("GET", url);
-		Http.send()
-		// console.log("redirect",page)
-		// $.ajax({
-		// 	url: page,
-		// 	type: "POST",
-		// 	data: { page: page }
-		// })
-
-	}
-	
-     </script>
+	</script>
 	 <title>Health Care Bot</title>
-     
+	 <style>
+	#home a{
+		font-weight: 600;
+		text-decoration: underline;
+	}
+	 a:hover{
+		color: white;
+		text-decoration: none;
+	}
+
+	.list-group-item > a{
+		/* font-weight: 600; */
+		text-decoration: none;
+		color: rgb(212, 211, 211);
+
+		display: block;
+		padding: 20px 80px !important;
+		background-color:  rgba(187, 187, 187, 0) !important;
+	}
+	 
+	 </style>
 </head>
   <body>
-	
 
-	{% if page %}
+	  <div class=" col-md-2 p-0 side-left">
+		  <ul class="list-group">
+			<li  id="home" class="list-group-item active">	<a href="http://localhost:5050/">Home</a></li>
 
-	<div class=" col-md-3 p-0 side-left">
-		<ul class="list-group">
-			<li onclick="redirect('/')" id="home" class="list-group-item active">	<a href="http://localhost:5050/">Home</a></li>
-			<li  onclick="redirect('/doctors')" id="doctors" class="list-group-item">		<a href="http://localhost:5050/doctors">Doctors</a></li >
-			<li onclick="redirect('/lab')" id="lab" class="list-group-item">		<a href="http://localhost:5050/lab">Laboratory</a></li>
-			<li onclick="redirect('/instructions')" id="Instructions" class="list-group-item">		<a href="http://localhost:5050/instructions">Instructions</a></li>
+			<li   id="doctors" class="list-group-item">		<a href="http://localhost:5050/doctors">Doctors</a></li >
+			<li id="lab" class="list-group-item">		<a href="http://localhost:5050/lab">Laboratory</a></li>
+			<li  id="Instructions" class="list-group-item">		<a href="http://localhost:5050/instructions">Instructions</a></li>
 		</ul>
 	</div>
-	{% endif %}
 
-    <div class="col-md-5 main p-0 ">
-		<h1>Health Care Bot</h1>
-      	<div class="message col-md-12 p-2 m-0">
-			<div class='left'> 	<div> Assalam-0-alaikum Sir, How may I help you?  </div>	</div>
-	  	</div>
-      	<div class="col-md-12 p-0 m-auto">
-		  <form class="col-md-12 p-0"  onsubmit="myFunction();return false">
-			<div class="col-md-10 p-0">
-				<input class="col-md-12 m-0 p-1" id="text" type="text" />
-			</div>
-			<div class="col-md-2 p-0 btn-div">
-				<input 
-				  type="submit"
-				  class="button col-md-12 p-1"
-				  value="send"
-				/>
-			</div>
-		  </form>
-      	</div>
+	<div class="col-md-7 d-inline-block">
+
+		<div class="col-md-10  main p-0 ">
+			<h1>Health Care Bot</h1>
+			  <div class="message col-md-12 p-2 m-0">
+				<div class='left'> 	<div> Assalam-0-alaikum Sir, How may I help you?  </div>	</div>
+			  </div>
+			  <div class="col-md-12 p-0 m-auto">
+			  <form class="col-md-12 p-0"  onsubmit="myFunction();return false">
+				<div class="col-md-10 p-0">
+					<input class="col-md-12 m-0 p-1" id="text" type="text" />
+				</div>
+				<div class="col-md-2 p-0 btn-div">
+					<input 
+					  type="submit"
+					  class="button col-md-12 p-1"
+					  value="send"
+					/>
+				</div>
+			  </form>
+			  </div>
+		</div>
 	</div>
 	<div class="side-right col-md-3">
 		<div class="col-md-12 p-0">

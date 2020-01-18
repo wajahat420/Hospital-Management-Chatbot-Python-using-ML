@@ -1,39 +1,11 @@
-body {
+/* body {
   background-color: #212121;
-}
-h1 {
-  text-align: center;
-  color: rgb(170, 169, 169);
-  margin: 10px;
-  padding: 10px;
-  /* padding: 0px 0px; */
-}
-.main {
-  /* text-align: center; */
-  margin: 0;
-  /* position: absolute; */
-  width: "100%";
-  /* background-color: aquamarine; */
-}
-.main > .message {
-  width: 900px;
-  margin: auto;
-  height: 500px;
-  border: 2px solid rgba(68, 68, 68, 0.18);
-  border-radius: 7px;
-  box-shadow: 0px 3px 20px 4px rgba(0, 0, 0, 0.18);
-  border-bottom: none;
-  /* padding-bottom: 10px; */
-}
-.message {
-  overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-}
-.message::-webkit-scrollbar {
-  /* WebKit */
-  width: 0;
-  height: 0;
-}
+} */
+
+
+
+
+
 
 .input {
   /* width: 500px; */

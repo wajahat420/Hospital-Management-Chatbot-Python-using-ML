@@ -137,13 +137,14 @@ def chat(user_input):
     tag = labels[results_index]
     max_ = max(results[0])
 
-    inp = [i.lower() for i in user_input.split()]
-    append_tag = False
+    user_input = user_input.lower()
+    inp = user_input.split()
+    # append_tag = False
 
-    for i in inp:
-        if i in words:
-            append_tag = True
-    if append_tag or max_ >50:
+    # for i in inp:
+    #     if i in words:
+    #         append_tag = True
+    if (tag == "doctor_appointment_asking" or tag == "doctor_appointment_reject") and max_ *100 > 50:
         tags_history.append(tag)
 
     for tg in data["intents"]:

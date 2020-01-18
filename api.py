@@ -7,12 +7,23 @@ from chatbot import *
 def send_answer():
     question = request.form['text']
     answer = chat(question)
-    
     return answer
+
 @app.route('/')
 def home():
-    print("working")
-    return  render_template('chatbot.html')
+    # print("home")
+    # pg = request.form['page']
+    return  render_template('chatbot.html',page=True)
+
+@app.route('/doctors', methods=["GET"])
+def doctors():
+    print("doctors")
+    return  render_template('doctors.html')
+
+@app.route('/lab', methods=["GET"])
+def lab():
+    print("lab")
+    return  render_template('laboratory.html')
 
     
 if __name__ == '__main__':

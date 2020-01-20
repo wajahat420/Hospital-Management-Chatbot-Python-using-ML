@@ -1,0 +1,21 @@
+you can talk about following things.
+
+1) greeting talks
+2) goodbye talks
+3) asking about closing and opening of hospital
+3) asking about doctor and their timings 
+4) can take an appointment and reject also, multiple times with providing name to it
+5) ask about which number is now
+6) ask about remaining time for my number
+7) asking about laboratory and their test
+8) want to meet patient
+9) people allowed to meet patient
+
+
+
+your appointment is booked with neurologist
+
+
+
+
+sidebar meetpatient

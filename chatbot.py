@@ -15,6 +15,7 @@ from functions import *
 
 tags_history = []
 appointment = ["You may take appointment from 2pm-4pm Do you want to confirm ?","You may take appointment from 2pm-4pm, confirm it please."]
+available_tests = ["blood","hepatitis","hemoglobin"]
 confirm_words = ["ok","done","yes","confirm"]
 confirm = False
 recent_doctor = ""
@@ -53,6 +54,8 @@ except:
     for intent in data["intents"]:
         for pattern in intent["patterns"]:
             
+            pattern = pattern.replace("?","")
+            pattern = pattern.replace(".","")
             # stop_words = set(stopwords.words('english')) 
             wrds = nltk.word_tokenize(pattern)
             wrds  = remove_stopwords(wrds)
@@ -139,72 +142,75 @@ def chat(user_input):
 
     user_input = user_input.lower()
     inp = user_input.split()
-    # append_tag = False
+    
+    print("\ntag = ",tag," prediction = ",max_)
+    print("tags_history",tags_history)
+    print("doctors",doctors)
 
-    # for i in inp:
-    #     if i in words:
-    #         append_tag = True
-    if (tag == "doctor_appointment_asking" or tag == "doctor_appointment_reject") and max_ *100 > 50:
+
+    if ( len(tags_history) >= 1):
+        if tag == "name" and tags_history[len(tags_history) - 1] == "doctor_appointment_reject" and ":" not in user_input:
+            return "You have given a wrong response. Please, follow the instructions."
+        if tags_history[len(tags_history) - 1] == "doctor_appointment_asking" and tags_history[len(tags_history) - 2] == "doctor_appointment_asking":
+            if "name" in user_input and ":" not in user_input:
+                return "Please use colon(:) in your answer."
+    if ((tag == "doctor_appointment_asking" or tag == "doctor_appointment_reject") or tag == "asking_doctor_and_timings"):
         tags_history.append(tag)
 
     for tg in data["intents"]:
         if tg['tag'] == tag:
             responses = tg['responses']
 
-    print("\ntag = ",tag," prediction = ",max_)
-    print("tags_history",tags_history)
+
     global confirm
     global recent_doctor
 
     split_for_name = user_input.split(":")
     string = " "
     join_string =  string.join(split_for_name[1:]).strip().lower()
-    if len(tags_history) < 1:
-        pass
-    elif tags_history[len(tags_history) - 1] == "doctor_appointment_asking":
-        for key,value in doctors.items():
-            if key in user_input:
-                recent_doctor = key
-                tags_history.append("doctor_appointment_asking")
-                return "Ok Sir, Tell me Your name i this manner. </br> name : wajahat"
+    if len(tags_history) >= 1:
 
-        if "name" in user_input and len(split_for_name) >= 2 and join_string not in  doctors[recent_doctor]["appointments"] :
-            doctors[recent_doctor]["appointments"].append(join_string)
-            return "Your Appointment is confirmed"
-        elif "name" in user_input and len(split_for_name) >= 2 and join_string in  doctors[recent_doctor]["appointments"] :
-            return "You have already taken an appointmnt"
-        # print("join_string",join_string)
+        if tags_history[len(tags_history) - 1] == "doctor_appointment_asking":
+            for key,value in doctors.items():
+                if key in user_input:
+                    recent_doctor = key
+                    tags_history.append("doctor_appointment_asking")
+                    return "Ok Sir, Tell me Your name in this manner. </br> name : wajahat"
+
+            if "name" in user_input and len(split_for_name) >= 2 and join_string not in  doctors[recent_doctor]["appointments"] :
+                doctors[recent_doctor]["appointments"].append(join_string)
+                return "Your Appointment is confirmed, to take another appointment follow above instructions to write name." 
+            elif "name" in user_input and len(split_for_name) >= 2 and join_string in  doctors[recent_doctor]["appointments"] :
+                return "You have already taken an appointmnt please use another name to book your appointment."
+        
+        # reject appointment or show msg    
+        if "name" in user_input and len(split_for_name) >= 2 and tags_history[len(tags_history) - 1] == "doctor_appointment_reject": 
+            found_name = False
+            for key,value in doctors.items():
+                if join_string in  value["appointments"]:
+                    found_name = True
+                    value["appointments"].remove(join_string)
+                    for tg in data["intents"]:
+                        if tg['tag'] == "doctor_appointment_reject":
+                            responses = tg['responses']
+                            return (random.choice(responses))
+            if not found_name:
+                return "Your appointment is already not in the list."
+        elif tag == "doctor_appointment_reject":
+            return "Specify your name please in this manner </br> name : Anas"
 
 
-    if tag == "doctor_appointment_reject":  # reject appointment if there exist otherwise print msg that that apoointment not exist
-        return "Specify your name please in this manner </br> name : Anas"
-    elif "name" in user_input and len(split_for_name) >= 2  and tags_history[len(tags_history) - 1] == "doctor_appointment_reject": # rejects an ppointment or show msg 
-        found_name = False
-        for key,value in doctors.items():
-            if join_string in  value["appointments"]:
-                found_name = True
-                value["appointments"].remove(join_string)
-                for tg in data["intents"]:
-                    if tg['tag'] == "doctor_appointment_reject":
-                        responses = tg['responses']
-                        return (random.choice(responses))
-        if not found_name:
-            return "Your appointment is already not in the list."
-    print("doctors",doctors)
+    # if tag == "asking_doctor_and_timings":
+    if "general" in inp or "physician" in inp:
+        return("General phyhician Timings :  {}".format(doctors["general physician"]["timings"]))
+    elif "neurologist" in inp:
+        return("Neurologist Timings {}".format(doctors["neurologist"]["timings"]))
+    elif "psychiatrist" in inp:
+        return("psychiatrist timings {}".format(doctors["psychiatrist"]["timings"]))
 
-    if max_ * 100 < 50:
-        return( "i am unable to answer it, Please ask something else" + str(max_))
+    if max_ * 100 < 60:
+        return( "Please talk about the relevant topics otherwise you must check your spellings once.!")
 
-    elif tag == "asking_doctor_and_timings":
-        if "general" in inp or "physician" in inp:
-            return("General phyhician Timings :  {}".format(doctors["general physician"]["timings"]))
-        elif "neurologist" in inp:
-            return("Neurologist Timings {}".format(doctors["neurologist"]["timings"]))
-        elif "psychiatrist" in inp:
-            return("psychiatrist timings {}".format(doctors["psychiatrist"]["timings"]))
     
-    return(random.choice(responses)+ " p=" + str(max_))
+    return(random.choice(responses))
 
-
-#if __name__ == '__main__':
- #   app.run(debug=True, port = 5050)

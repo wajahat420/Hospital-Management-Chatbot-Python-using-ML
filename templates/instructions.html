@@ -6,46 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Instructions</title>
 	<link rel="stylesheet" href="../static/styles/main.css">
-	<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
-	<script src="{{url_for('static',filename='script.js')}}"></script> -->
+	<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"> -->
+	<script src="{{url_for('static',filename='script.js')}}"></script> 
+	<script src="{{url_for('static',filename='onpageLoad.js')}}"></script> 
+
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script>
-		function showDetails(item){
-			item1 = document.getElementById("h4-1")
-			item2 = document.getElementById("h4-2")
-			item3 = document.getElementById("h4-3")
-			console.log("className"+item1.className)
-			if (item == 1){
-				if (item1.className == ""){
-				item1.className  = "d-none"
-				}else{
-				item1.className  = ""
-				item2.className  = "d-none"
-				item3.className  = "d-none"
-				}
-			}else if ( item == 2){
-				if (item2.className == ""){
-				item2.className  = "d-none"
-				}else{
-				item1.className  = "d-none"
-				item2.className  = ""
-				item3.className  = "d-none"
-				}
-			}else{
-				if (item3.className == ""){
-				item3.className  = "d-none"
-				}else{
-				item1.className  = "d-none"
-				item2.className  = "d-none"
-				item3.className  = ""
-				}
-			}
-		}
-		</script>
+
 	<style>
 		body{
 			color: rgb(235, 233, 233);;
@@ -57,7 +27,7 @@
 			background-color: #c7444f;
 			margin: 10px auto !important;
 			border: 2px solid black;
-		}
+		}/home/wajahat/Desktop/Flask/Hospital-Management-Chatbot-Python-using-ML/templates/instructions.html
 		.side-left,.side-right{
 			display: inline-block;
 		}
@@ -92,15 +62,10 @@
 	
 	</style>
 </head>
-<body>
+<body onload="pageLoad()">
 
-	<div class=" col-md-2 p-0 side-left">
-		<ul class="list-group">
-			<li  id="home" class="list-group-item active">	<a href="http://localhost:5050/">Home</a></li>
-			<li   id="doctors" class="list-group-item">		<a href="http://localhost:5050/doctors">Doctors</a></li >
-			<li id="lab" class="list-group-item">		<a href="http://localhost:5050/lab">Laboratory</a></li>
-			<li  id="instructions" class="list-group-item">		<a href="http://localhost:5050/instructions">Instructions</a></li>
-		</ul>
+	<div id="side-left" class=" col-md-2 p-0 side-left">
+
 	</div>
 	<div class="col-md-7 p-0 d-inline-block">
 		<h1>Chatbot Instructions Set</h1>
@@ -142,25 +107,8 @@
 		</div>
 	</div>
 
-	<div class="side-right col-md-3">
-		<div class="col-md-12 p-0">
-			<h4 onclick="showDetails(1)"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding: 2px;"></i> Appointments</h4>
-				<ul class="d-none" id="h4-1">
-					<li>Take Multiple Appointments</li>
-					<li>Reject Appointment</li>
-				</ul>
-			<h4 onclick="showDetails(2)"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding-right: 10px;"></i>Doctor</h4>
-				<ul class="d-none" id="h4-2">
-					<li>Take Multiple Appointments</li>
-					<li>Reject Appointment</li>
-				</ul>
-			
-			<h4 onclick="showDetails(3)"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding-right: 10px;"></i>Lab Details</h4>
-				<ul class="d-none" id="h4-3">
-					<li>Take Multiple Appointments</li>
-					<li>Reject Appointment</li>
-				</ul>
-		</div>
+	<div id ="side-right" class="side-right col-md-3">
+
 	</div>
 </body>
 </html>

@@ -11,15 +11,15 @@ h1{
 }
 
 .main > .message{
-  /* width: 900px; */
+    width: 100%;
   /* margin: auto; */
-  overflow-x: hidden;
-  height: 600px; 
-  border-bottom: none;
-  overflow-y: scroll;
-  box-shadow: 0px 3px 20px 4px rgba(0, 0, 0, 0.18);
-  border: 2px solid rgba(68, 68, 68, 0.18);
-  border-radius: 7px;
+    overflow-x: hidden;
+    height: 600px; 
+    border-bottom: none;
+    overflow-y: scroll;
+    box-shadow: 0px 3px 20px 4px rgba(0, 0, 0, 0.18);
+    border: 2px solid rgba(68, 68, 68, 0.18);
+    border-radius: 7px;
 }
 
 input {

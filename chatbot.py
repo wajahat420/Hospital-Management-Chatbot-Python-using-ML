@@ -41,7 +41,7 @@ with open("intents.json") as file:
 
 
 try:    
-    with open("dataa.pickle", "rb") as f:
+    with open("data.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
     print("try")
         
@@ -99,7 +99,7 @@ except:
 try:
     print("try-2")
     # load json and create model
-    json_file = open('modell.json', 'r')
+    json_file = open('model.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)

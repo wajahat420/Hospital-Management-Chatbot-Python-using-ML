@@ -42,46 +42,73 @@
 		padding: 20px 80px !important;
 		background-color:  rgba(187, 187, 187, 0) !important;
 	}
+	.microphone{
+		/* width: 10px; */
+		margin-right: 2px;
+		padding: 15px 5px 10px 10px;
+		background-color: #c7444f;
+		border-radius: 50%;
+	}
+
+	.fa-microphone{
+		/* padding-bottom: 7px;
+		padding-top: 18px;
+		padding-left: 11px; */
+
+		color: rgb(42, 37, 37)
+	}
+	.fa-microphone:hover{
+		cursor: pointer;
+		color: rgb(61, 61, 61)
+	}
+	form button:hover{
+		color: rgb(71, 71, 71);
+	}
+	form button{
+		width:  100%;
+	}
 	 
 	 </style>
 </head>
   <body onload="pageLoad()">
 
-	  <div id="side-left" class=" col-md-2 p-0 side-left">
+	<div id="side-left" class=" col-md-2 p-0 side-left" style="background: #212121;">
 
 	</div>
 
-	<div class="col-md-7 d-inline-block">
-		<div class="col-md-10 m-auto  p-0 ">
+	<div class="col-md-7 d-inline-block" style="background: #313131;">
+		<div class="col-md-10 m-auto middle  p-0 ">
 			<div class="main col-md-12 p-0">
 
-				<h1>Health Care Bot</h1>
-				  <div id="message" class="message col-md-12 p-2 m-auto">
-					<div class='left'> 	<div> Assalam-0-alaikum Sir, How may I help you?  </div>	</div>
+				<h1 style="color: #ac4c4c; margin: 20px;text-transform: uppercase;font-weight: 600;">Health Care Bot</h1>
+				  <div id="message" class="message col-md-12 p-2 m-auto" style="background: #212121; height: 500px;">
+					<div class='left'> 	<div> Assalam O Alaikum Sir, How may I help you?  </div>	</div>
 					</div>
 				  <div class="col-md-12 p-0 m-auto">
 				  <form class="col-md-12 p-0"  onsubmit="myFunction();return false">
-					<div class="col-md-10 p-0">
-						<input class="col-md-12 m-0 p-1" id="text" type="text" />
+					<div class="col-md-12 p-0" style="margin-top: 5px;">
+						<input class="col-10 m-0 p-1" id="text" style="background: #4e4e4e; border: #4e4e4e;color: aliceblue;" type="text" />
+						<div class="col-1  d-inline microphone" onclick="voiceRecord()">
+							<i class="fa fa-microphone" style="font-size:36px;"></i>
+						</div>
+						<div class="col-1 d-inline p-0">
+							<button class="d-inline" value ="send" style="background: #ac4c4c; padding: 3px;width: 60px; border: #ac4c4c;box-shadow:1px 1px 1px 1px rgba(24, 24, 24, 0.712);text-transform: uppercase;font-weight: 600;">
+								Send</button>
+						</div>
+				
 					</div>
-					<div class="col-md-2 p-0 btn-div">
-						<input 
-						  type="submit"
-						  class="button col-md-12 p-1"
-						  value="send"
-						/>
-						<input 
-							onclick="voiceRecord()"
-							type="button"
-							class=""
-							value="Voice"
-					  />
+					<!-- <input 
+						onclick="voiceRecord()"
+						type="button"
+						class=""
+						value="Voice"
+					/> -->
 					</div>
 				  </form>
 				  </div>
 			</div>
 		</div>
 	</div>
-	<div id = "side-right" class="side-right col-md-3"></div>
+	<div id = "side-right" class="side-right col-md-3" style="background: #212121;"></div>
   </body>
 </html>

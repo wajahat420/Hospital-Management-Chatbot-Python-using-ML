@@ -50,59 +50,71 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		 <style>
-			#doctors a{
-				font-weight: 600;
-				text-decoration: underline;
-			}
-			 a:hover{
-				color: white;
-				text-decoration: none;
-			}
-		
-			.list-group-item > a{
-				/* font-weight: 600; */
-				text-decoration: none;
-				color: rgb(212, 211, 211);
-		
-				display: block;
-				padding: 20px 80px !important;
-				background-color:  rgba(187, 187, 187, 0) !important;
-			}
-			 
-			 </style>
+
+    <style>
+		body {
+		  background: #313131 !important;
+		}
+		#doctors a {
+		  font-weight: 600;
+		  text-decoration: underline;
+		}
+		a:hover {
+		  color: white;
+		  text-decoration: none;
+		}
+  
+		.list-group-item > a {
+		  /* font-weight: 600; */
+		  text-decoration: none;
+		  color: rgb(212, 211, 211);
+  
+		  display: block;
+		  padding: 20px 80px !important;
+		  background-color: rgba(187, 187, 187, 0) !important;
+		}
+	  </style>
 </head>
 <body onload="pageLoad()">
 	<div id="side-left" class=" col-md-2 p-0 side-left">
 
 	</div>
-	<div class="col-md-7 d-inline-block p-0">
-		<h1>Doctors And Timings</h1>
-		<div class="col-md-10 p-0 m-auto">
-			<table cellpadding="20"	 class="col-md-12 p-0">
-				<thead class="text-center head">
-					<th>Name</th>
-					<th>Especialist</th>
-					<th>Timings</th>
-				</thead>
-				<tbody class="body">
-					<tr class="">
-						<td>Dr. Asad</td>
-						<td>Neurologist</td>
-						<td>He will sit from 4pm-9pm Wed-Fri</td>
-					</tr>
-					<tr class="">
-						<td>Dr. Abbas</td>
-						<td>Psychiatrist</td>
-						<td>He will sit 1pm-7pm Mon-Fri</td>
-					</tr>
-					<tr class="">
-						<td>Dr. Saad</td>
-						<td>General Physician</td>
-						<td>He will sit from 4pm-9pm, Sat and Sunday</td>
-					</tr>
-				</tbody>
+	<div class="col-md-7 d-inline-block p-0" style="background: #313131;">
+		<h1 style="color: #ac4c4c; margin: 20px;text-transform: uppercase;font-weight: 600;">
+			Doctors And Timings
+		</h1>
+
+		<div class="col-md-10 p-0 m-auto" style="margin-top: 5px;">
+			<table cellpadding="20" class="col-md-12 p-0">
+			  <thead class="text-center head" style="background:rgb(22, 22, 22)">
+				<th>Name</th>
+				<th>Specialists</th>
+				<th>Timings</th>
+			  </thead>
+			  <tbody class="body" style="background: #212121;">
+				<tr class="">
+				  <td>Dr. Asad</td>
+				  <td>Neurologist</td>
+				  <td>He will sit from 4pm-9pm Wed-Fri</td>
+				</tr>
+				<tr class="">
+				  <td>Dr. Abbas</td>
+				  <td>Psychiatrist</td>
+				  <td>He will sit 1pm-7pm Mon-Fri</td>
+				</tr>
+				<tr class="">
+				  <td>Dr. Saad</td>
+				  <td>General Physician</td>
+				  <td>He will sit from 4pm-9pm, Sat and Sunday</td>
+				</tr>
+				<tr class="">
+				  <td>Dr. Alia</td>
+				  <td>Physiotherapist</td>
+				  <td>He will sit from 4pm-9pm, Sat and Sunday</td>
+				</tr>
+			  </tbody>
 			</table>
+		  
 		</div>
 	</div>
 

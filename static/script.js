@@ -60,6 +60,7 @@ function  myFunction() {
 }
 
 function voiceRecord() {
+  console.log("working...........")
   id = document.getElementById("message")
 
   $.ajax({
@@ -67,15 +68,16 @@ function voiceRecord() {
       type: "GET",
   }).done((res) => {
   
+    console.log("before")
       messages.push(res.ques);
       messages.push(res.ans);
+      console.log("after")
 
       var html1 = "<div class='right'>	<div>" + res.ques + " </div>	</div>";
       $(".message").append(html1);
       
 
       id.scrollTop = id.scrollHeight;
-      console.log("message", messages)
 
   });
   $.ajax({

@@ -29,6 +29,7 @@ def speechh():
 
 @app.route("/speechToText",methods = ["GET"])
 def speechToText():
+    # try :
     print("req method",request.method)
     question = speechh()
 
@@ -37,7 +38,9 @@ def speechToText():
     textAns = getAnswer
 
     return {"ques":question,"ans":getAnswer}
-
+    # except:
+    #     print("not working properly")
+    #     return "not working properly"
 
 
 @app.route("/textTospeech", methods=["POST"])
@@ -50,6 +53,7 @@ def textTospeech():
     getAnswer = chat(question)
     global textAns
     textAns = getAnswer
+
     return textAns
     # engine = pyttsx3.init() 
     # engine.say(str(question))
@@ -58,11 +62,12 @@ def textTospeech():
 
 @app.route("/speak", methods=["GET"])
 def speak():
+    global textAns
     print("speak")
     engine = pyttsx3.init() 
     engine.say(str(textAns))
     engine.runAndWait()
-
+    textAns = ""
     return ""
 
 @app.route("/get_report", methods=["GET"])

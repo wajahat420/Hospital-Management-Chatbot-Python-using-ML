@@ -9,7 +9,7 @@
 	<style>
 	body{
 		color: white;
-		background-color: blue !important;
+		/* background-color: blue !important; */
 	}
 	table{
 		background-color: #c7444f;
@@ -39,40 +39,6 @@
 		margin-top: 70px !important;
 		text-align: center;
 	}
-
-	</style>
-	<link rel="stylesheet" href="../static/styles/main.css">
-	 <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"> -->
-	<script src="{{url_for('static',filename='script.js')}}"></script> 
-	<script src="{{url_for('static',filename='onpageLoad.js')}}"></script> 
-
-	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
-	<style>
-	#lab a{
-		font-weight: 600;
-		text-decoration: underline;
-	}
-		a:hover{
-		color: white;
-		text-decoration: none;
-	}
-
-	.list-group-item > a{
-		/* font-weight: 600; */
-		text-decoration: none;
-		color: rgb(212, 211, 211);
-
-		display: block;
-		padding: 20px 80px !important;
-		background-color:  rgba(187, 187, 187, 0) !important;
-	}
 	.name{
 		border: 6px solid black;
 		/* background-color:  #c7444f; */
@@ -80,7 +46,7 @@
 		/* line-height: 2px; */
 		left: 400px;
 		top: 300px;
-		height: 200px;
+		height: 240px;
 		z-index: 10000;
 	}
 	.name div{
@@ -113,13 +79,49 @@
 	.name .button >  input{
 		width: 100%;
 	}
-		
-		</style>
+
+	</style>
+	<link rel="stylesheet" href="../static/styles/main.css">
+	 <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"> -->
+	<script src="{{url_for('static',filename='script.js')}}"></script> 
+	<script src="{{url_for('static',filename='onpageLoad.js')}}"></script> 
+
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+	<style>
+		#lab a {
+		  font-weight: 600;
+		  text-decoration: underline;
+		}
+		a:hover {
+		  color: white;
+		  text-decoration: none;
+		}
+  
+		.list-group-item > a {
+		  /* font-weight: 600; */
+		  text-decoration: none;
+		  color: rgb(212, 211, 211);
+  
+		  display: block;
+		  padding: 20px 80px !important;
+		  background-color: rgba(187, 187, 187, 0) !important;
+		}
+	  </style>
 </head>
-<body onload="pageLoad()">
+<body onload="pageLoad()" style="background: #313131;">
 
-	<div id="side-left" class=" col-md-2 p-0 side-left">
-
+	<div
+		id="side-left"
+		class=" col-md-2 p-0 side-left"
+		style="background: #212121;"
+	  ></div>
 	</div>
 	<div class="col-md-7 d-inline-block p-0 ">
 		<h1>Lab tests Datails</h1>
@@ -128,34 +130,39 @@
 		</div>
 		<div class="col-md-10 m-auto">
 			<table cellpadding="15" class="col-md-12">
-				<thead class="text-center head">
-					<th width="1%">S.no</th>
-					<th>Test</th>
-					<th>Price</th>
-					<th>Timings</th>
+				<thead class="text-center head" style="background:rgb(22, 22, 22);">
+				  <th width="1%">S.no</th>
+				  <th>Test</th>
+				  <th>Price</th>
+				  <th>Timings</th>
 				</thead>
-				<tbody class="body">
-					<tr class="">
-						<td >1</td>
-						<td>Blood</td>
-						<td>400</td>
-						<td>2pm-10pm</td>
-					</tr>
-					<tr class="">
-						<td>2</td>
-						<td>Hepatitis</td>
-						<td>800</td>
-						<td>2pm-6pm</td>
-	
-					</tr>
-					<tr class="">
-						<td>3</td>
-						<td>Hemoglobin</td>
-						<td>700</td>
-						<td>5pm-7pm</td>
-					</tr>
+				<tbody class="body" style="background: #212121;">
+				  <tr class="">
+					<td>1</td>
+					<td>MP</td>
+					<td>100/-</td>
+					<td>2pm-10pm</td>
+				  </tr>
+				  <tr class="">
+					<td>2</td>
+					<td>Hepatitis</td>
+					<td>800/-</td>
+					<td>2pm-6pm</td>
+				  </tr>
+				  <tr class="">
+					<td>3</td>
+					<td>Hemoglobin</td>
+					<td>700/-</td>
+					<td>5pm-7pm</td>
+				  </tr>
+				  <tr class="">
+					<td>4</td>
+					<td>CBC</td>
+					<td>750/-</td>
+					<td>4pm-7pm</td>
+				  </tr>
 				</tbody>
-			</table>
+			  </table>
 		</div>
 	</div>	
 

@@ -17,95 +17,118 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<style>
-		body{
-			color: rgb(235, 233, 233);;
-			background-color: rgb(98, 98, 163);
+		body {
+		  color: rgb(235, 233, 233);
+		  background: #313131;
+	  }
+		.instructions {
+		  /* margin-left: 80px !important; */
+		  /* display: inline-block; */
+		  background-color: #c7444fc5;
+		  margin: 10px auto !important;
+		  border: 2px solid #c7444fcb;
+		  box-shadow: 1px 1px 25px 1px rgba(10, 10, 10, 0.815);
+		  border-radius: 6px;
+		  margin-bottom: 10px;
 		}
-		.instructions{
-			/* margin-left: 80px !important; */
-			/* display: inline-block; */
-			background-color: #c7444f;
-			margin: 10px auto !important;
-			border: 2px solid black;
-		}/home/wajahat/Desktop/Flask/Hospital-Management-Chatbot-Python-using-ML/templates/instructions.html
-		.side-left,.side-right{
-			display: inline-block;
+		.side-left,
+		.side-right {
+		  display: inline-block;
+		  background: #212121;
 		}
 		span {
-			/* padding: 10px 0px; */
-			/* margin-top: 50px; */
-			font-weight: 600;
-			font-size: 1.15em;
+		  /* padding: 10px 0px; */
+		  /* margin-top: 50px; */
+		  font-weight: 600;
+		  font-size: 1.15em;
 		}
-		ul{
-			padding: 50px auto ;
+		ul {
+		  padding: 50px auto;
 		}
-		#instructions a{
-			font-weight: 600;
-			text-decoration: underline;
+		#instructions a {
+		  font-weight: 600;
+		  text-decoration: underline;
 		}
-		a:hover{
-			color: white;
-			text-decoration: none;
+		a:hover {
+		  color: white;
+		  text-decoration: none;
 		}
-
-		.list-group-item > a{
-			/* font-weight: 600; */
-			text-decoration: none;
-			color: rgb(212, 211, 211);
-
-			display: block;
-			padding: 20px 80px !important;
-			background-color:  rgba(187, 187, 187, 0) !important;
+  
+		.list-group-item > a {
+		  /* font-weight: 600; */
+		  text-decoration: none;
+		  color: rgb(212, 211, 211);
+  
+		  display: block;
+		  padding: 20px 80px !important;
+		  background-color: rgba(187, 187, 187, 0) !important;
 		}
-	 
-	
-	</style>
+	  </style>
 </head>
 <body onload="pageLoad()">
-
-	<div id="side-left" class=" col-md-2 p-0 side-left">
-
-	</div>
-	<div class="col-md-7 p-0 d-inline-block">
-		<h1>Chatbot Instructions Set</h1>
-		<div class="col-md-10 m-auto  p-2 instructions">
-
-			<ul>
-				<li><span>Talking Instructions</span>
-					<ul>
-						<li>Use correct spellings inorder for correct answer</li>
-						<li>Don't ask irrelevant question as it will not answer you for that</li>
-						<li>You may ask it for doctors along with their timings</li>
-						<li>You may take an appointment(one or more)</li>
-						<li>you may ask about lab tests</li>
-					</ul>
-				</li>
-				<li><span> Instructions about a doctor</span>
-					<ul>
-						<li>Doctor availability timings you may ask from chatbot or visit our page on clicking left link following with "doctor". </li>
-						<li>You may ask the timings of a particular doctor</li>
-					</ul>
-				</li>
-				<li><span>Insructions About an Appointment</span>
-					<ul>
-						<li>If you want to confirm an appointment you can ask from chatbot</li>
-						<li>You can take multiple appointments with different name</li>
-						<li>if that appointment is already in the list then chatbot will not entertain it and show a msg to you</li>
-						<li>You can also reject your appointment</li>
-						<li>In case of taking or rejection of an appointment it will take your name in a specific manner like name:'your name'</li>
-						<li>if you not mention name keyword it will not accept due to invalid syntax</li>
-					</ul>
-				</li>
-				<li><span>Instructions about Laboratory</span>
-					<ul>
-						<li>You may ask about lab timings</li>
-						<li>you may ask about lab test available here</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
+    <div
+      id="side-left"
+      class=" col-md-2 p-0 side-left"
+      style="background: #212121;"
+    ></div>
+    <div class="col-md-7 p-0 d-inline-block" style="background: #313131;">
+      <h1 style="text-transform: uppercase;margin:30px">Chatbot Instructions Set</h1>
+      <div class="col-md-10 m-auto  p-2 instructions">
+        <ul>
+          <li>
+            <span>Talking Instructions</span>
+            <ul>
+              <li>Use correct spellings inorder for correct answer</li>
+              <li>
+                Don't ask irrelevant question as it will not answer you for that
+              </li>
+              <li>You may ask it for doctors along with their timings</li>
+              <li>You may take an appointment(one or more)</li>
+              <li>you may ask about lab tests</li>
+            </ul>
+          </li>
+          <li>
+            <span> Instructions about a doctor</span>
+            <ul>
+              <li>
+                Doctor availability timings you may ask from chatbot or visit
+                our page on clicking left link following with "doctor".
+              </li>
+              <li>You may ask the timings of a particular doctor</li>
+            </ul>
+          </li>
+          <li>
+            <span>Insructions About an Appointment</span>
+            <ul>
+              <li>
+                If you want to confirm an appointment you can ask from chatbot
+              </li>
+              <li>You can take multiple appointments with different name</li>
+              <li>
+                if that appointment is already in the list then chatbot will not
+                entertain it and show a msg to you
+              </li>
+              <li>You can also reject your appointment</li>
+              <li>
+                In case of taking or rejection of an appointment it will take
+                your name in a specific manner like name:'your name'
+              </li>
+              <li>
+                if you not mention name keyword it will not accept due to
+                invalid syntax
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>Instructions about Laboratory</span>
+            <ul>
+              <li>You may ask about lab timings</li>
+              <li>you may ask about lab test available here</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
 
 	<div id ="side-right" class="side-right col-md-3">
 

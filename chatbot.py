@@ -19,17 +19,18 @@ available_tests = ["blood","hepatitis","hemoglobin"]
 confirm_words = ["ok","done","yes","confirm"]
 confirm = False
 recent_doctor = ""
+
 doctors = {
     "psychiatrist" : {
     "timings" : "Mon-Fri 2pm-4pm",
     "appointments" : [],
     },
     "neurologist" : {
-    "timings" : "4pm-8pm",
+    "timings" : "Wed-Fri 4pm-8pm",
     "appointments" : [],
     },
     "general physician" : {
-    "timings" : "4pm-9pm",
+    "timings" : "Sat and Sun     3pm-9pm",
     "appointments" : [],
     }
 }
@@ -40,7 +41,7 @@ with open("intents.json") as file:
 
 
 try:    
-    with open("data.pickle", "rb") as f:
+    with open("dataa.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
     print("try")
         
@@ -98,7 +99,7 @@ except:
 try:
     print("try-2")
     # load json and create model
-    json_file = open('model.json', 'r')
+    json_file = open('modell.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
@@ -179,7 +180,7 @@ def chat(user_input):
 
             if "name" in user_input and len(split_for_name) >= 2 and join_string not in  doctors[recent_doctor]["appointments"] :
                 doctors[recent_doctor]["appointments"].append(join_string)
-                return "Your Appointment is confirmed, to take another appointment follow above instructions to write name." 
+                return "Your Appointment is confirmed, Appoinment number = 150 </br> To take another appointment follow above instructions to write name." 
             elif "name" in user_input and len(split_for_name) >= 2 and join_string in  doctors[recent_doctor]["appointments"] :
                 return "You have already taken an appointmnt please use another name to book your appointment."
         
@@ -211,6 +212,7 @@ def chat(user_input):
     if max_ * 100 < 60:
         return( "Please talk about the relevant topics otherwise you must check your spellings once.!")
 
-    
+    if tag == "asking_doctor_and_timings":
+        return (random.choice(responses).format(doctors["general physician"]["timings"],doctors["neurologist"]["timings"],doctors["psychiatrist"]["timings"]))
     return(random.choice(responses))
 

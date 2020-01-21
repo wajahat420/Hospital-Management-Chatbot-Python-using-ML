@@ -8,7 +8,7 @@
 	"responses": [ "I am fine Sir how are you?","I am fine Sir how may I help you?","I am fine Sir anything that you want to ask?"]
 	},
 	{"tag": "greeting-3",
-		"patterns": [ "assalam-o-alaikum","salam","walaikum assalam","walaikum salam","w.salam"],
+		"patterns": [ "assalam-o-alaikum","salam","assalam alaikum"],
 		"responses": [ "W.salam, Do you want to ask anything?"]
 	},
 	{"tag": "greeting-4",
@@ -30,12 +30,12 @@
 	},
 	{"tag": "asking_doctor_and_timings",
 	"patterns" : ["tell me the timings of doctor","let me know the timing of doctors","please give me the schedule","what are the timings of doctor","i want to know the doctor timings","i want to ask about doctor","what is the time at which doctor operate","what is the operating time of doctor","give me the doctor timings","give me the list of doctors","please provide me doctor schedule","timings for doctor are?","what are doctor timings","when will doctor sit", "is here any doctor sit?","Does any doctor sit here","when will doctor sit","i want to know that which doctor sit here","tell me the type of doctor sit here","which doctor sit in the evening","doctor which sit in the morning","does here is any doctor which sit in the afternoon time","what is the timings for the doctor which sit here","please provide me the list and timings of doctors","please give me the list of doctors which sit here","what type of doctor sit here","i want to know doctor and their timings of sitting here","provide me the scedule of doctor and timings","plese, provide me the timings of dcotors"],
-	"responses": [ "Doctor which sit here are as follow along with its timings: </br> * General Physician(9-2)pm </br> * Neurologist(2-5)pm </br>   * Psychiatrist(3-10)pm"]
+	"responses": [ "Doctor available here are as follow along with its timings: </br> * General Physician {} </br> * Neurologist {} </br>   * Psychiatrist{}"]
 	},
 	{
 	"tag" : "running_number",
 	"patterns" : ["tell me the current number","which number is now", "what is the current number which is operating by doctor","which number is now","please provide me the current status of number","what is the number which is running now","which number is currently operating"],
-	 "responses" : [ "Current running number is 202"]
+	 "responses" : [ "Current running number is 100","The number which is operating now is 90","110 is the current appointment number."]
    },
    {
     "tag" : "waiting_time",
@@ -70,12 +70,12 @@
   {
 	"tag" : "asking_laboratory",
 	"patterns" : ["is laboratory available?","i want ask about laboratory is it available","when will laboratory be open","what is the time for the opening of laboratory?","opening of laboratory will be"],
-	"responses" : [ "The Laboratory will open from 2pm till 10pm"]
+	"responses" : [ "The Laboratory will open from 24 hours","You may come anytime it is open 24 hours.","Lab is open 24/7"]
   },
   {
 	"tag" : "asking_test",
 	"patterns" : [ "i want to perform test","what tests are available in the laboratory","please guide me i want to take test","i want to do test","my uncle will come for test is this test available","what types of tests are available","guide me about test"],
-	"responses" : [ "Test available are the following: </br> Brain </br> Mouth </br> Nerves"]
+	"responses" : [ "Test available are the following: </br> blood </br> hepatitis </br> hemoglobin </br> You may come any time for your test."]
   }
 ]
 }

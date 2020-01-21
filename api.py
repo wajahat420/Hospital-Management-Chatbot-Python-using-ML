@@ -2,6 +2,75 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 from chatbot import *
+import speech_recognition as sr
+import pyttsx3
+
+
+reports = [
+    {
+    "name" : "haider",
+    "report-type":"blood"
+    }
+]
+textAns = ""
+
+
+def speechh():     
+    r = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        # print("Speak Anything :")
+        audio = r.listen(source)
+        try:
+            text = r.recognize_google(audio)
+            return text
+        except:
+            return "Sorry could not recognize what you said"
+
+@app.route("/speechToText",methods = ["GET"])
+def speechToText():
+    print("req method",request.method)
+    question = speechh()
+
+    getAnswer = chat(question)
+    global textAns
+    textAns = getAnswer
+
+    return {"ques":question,"ans":getAnswer}
+
+
+
+@app.route("/textTospeech", methods=["POST"])
+def textTospeech():
+    # print("req method",request.method)
+    print("textTospeech1")
+
+    question = request.form['text']
+
+    getAnswer = chat(question)
+    global textAns
+    textAns = getAnswer
+    return textAns
+    # engine = pyttsx3.init() 
+    # engine.say(str(question))
+    # engine.runAndWait()
+
+
+@app.route("/speak", methods=["GET"])
+def speak():
+    print("speak")
+    engine = pyttsx3.init() 
+    engine.say(str(textAns))
+    engine.runAndWait()
+
+    return ""
+
+@app.route("/get_report", methods=["GET"])
+def confirm():
+    # question = request.form['text']
+    # answer = chat(question)
+    return {"reports" : reports}
+
 
 @app.route("/send_and_receive", methods=["POST"])
 def send_answer():

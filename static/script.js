@@ -1,33 +1,23 @@
-function showDetails(item){
-  item1 = document.getElementById("h4-1")
-  item2 = document.getElementById("h4-2")
-  item3 = document.getElementById("h4-3")
-  // console.log("className"+item1.className)
-  if (item == 1){
-    if (item1.className == ""){
-    item1.className  = "d-none"
+function showDetails(itemID){
+  ids = ["h4-1","h4-2","h4-3","h4-4","h4-5","h4-6","h4-7"]
+  id = document.getElementById(itemID)
+
+  // console.log("id",itemID)
+    if (id.className == ""){
+        id.className  = "d-none"
     }else{
-    item1.className  = ""
-    item2.className  = "d-none"
-    item3.className  = "d-none"
+      id.className  = ""
+      for(i=0;i<ids.length;i++){
+        otherId = document.getElementById(ids[i])
+        if(itemID != ids[i]){
+            // console.log("ids[i]",ids[i])
+            otherId.className  = "d-none"
+          }
+      }
     }
-  }else if ( item == 2){
-    if (item2.className == ""){
-    item2.className  = "d-none"
-    }else{
-    item1.className  = "d-none"
-    item2.className  = ""
-    item3.className  = "d-none"
-    }
-  }else{
-    if (item3.className == ""){
-    item3.className  = "d-none"
-    }else{
-    item1.className  = "d-none"
-    item2.className  = "d-none"
-    item3.className  = ""
-    }
-  }
+
+
+  
 }
 var messages = [];
 
@@ -41,15 +31,19 @@ function  myFunction() {
   if (text == ""){
     return
   }
+  // Speak Question
   $.ajax({
-    url: "/send_and_receive",
+    url: "/textTospeech",
     type: "POST",
     data: { text: text }
     }).done((res) => {
         messages.push(res);
+        // var html = "<div class='right'>	<div>"  + messages[messages.length - 1] + " </div>	</div>";
+        // $(".message").append(html);
+        id.scrollTop = id.scrollHeight ;
 
         for (i = messages.length - 2; i < messages.length; i++) {
-            if (i % 2 == 0) {
+            if (i % 2 == 1) {
               var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
             } else {
               var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
@@ -58,6 +52,45 @@ function  myFunction() {
             id.scrollTop = id.scrollHeight ;
         }
     });
+  // Speak answer 
+    $.ajax({
+      url: "/speak",
+      type: "GET",
+    })
+}
+
+function voiceRecord() {
+  id = document.getElementById("message")
+
+  $.ajax({
+      url: "/speechToText",
+      type: "GET",
+  }).done((res) => {
+      messages.push(res.ques);
+      messages.push(res.ans);
+
+      var html1 = "<div class='right'>	<div>" + res.ques + " </div>	</div>";
+      $(".message").append(html1);
+      
+
+      id.scrollTop = id.scrollHeight;
+      // console.log("message", messages)
+
+  });
+  $.ajax({
+      url: "/speak",
+      type: "GET",
+  }).done(() => {
+
+    var html2 = "<div class='left'>	<div> " + messages[messages.length - 1] + " </div>	</div>";
+    $(".message").append(html2);
+
+    id.scrollTop = id.scrollHeight;
+    // console.log("message", messages)
+
+});
+
+
 }
 
 

@@ -9,21 +9,16 @@ function pageLoad(){
 	</ul>
 	<h4 onclick="showDetails('h4-2')"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding: 2px;"></i> Appointments</h4>
 		<ul class="d-none" id="h4-2">
-			<li>Ask about available Doctor</li>
-			<li>Timing of Doctors</li>
+			<li>Take Multiple Appointments</li>
+			<li>Reject Appointment</li>
 		</ul>
+		
 	<h4 onclick="showDetails('h4-3')"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding-right: 10px;"></i>Doctor</h4>
-		<ul class="d-none" id="h4-3">
-			<li>Take Multiple Appointments</li>
-			<li>Reject Appointment</li>
-		</ul>
-	
-	<h4 onclick="showDetails('h4-4')"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding-right: 10px;"></i>Lab Details</h4>
-		<ul class="d-none" id="h4-4">
-			<li>Take Multiple Appointments</li>
-			<li>Reject Appointment</li>
-		</ul>
-	</div>
+	<ul class="d-none" id="h4-3">
+		<li>Ask about available Doctor</li>
+		<li>Timing of Doctors</li>
+	</ul>
+
 	<h4 onclick="showDetails('h4-5')"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding: 2px;"></i> Meet Patient</h4>
 	<ul class="d-none" id="h4-5">
 		<li>Ask to meet patient</li>
@@ -34,12 +29,12 @@ function pageLoad(){
 	<ul class="d-none" id="h4-6">
 		<li>Opening and Closing</li>
 		<li>Tests available</li>
-		<li>Report available</li>
 	</ul>
 	<h4 onclick="showDetails('h4-7')"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding: 2px;"></i>Ending Greeting</h4>
 	<ul class="d-none" id="h4-7">
 		<li>Ending Greeting</li>
 	</ul>
+	</div>
 
 	`
 	$(".side-right").append(html);

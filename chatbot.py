@@ -134,6 +134,9 @@ def bag_of_words(s, words):
     return numpy.array(bag)
 
 def chat(user_input):
+    user_input = user_input.replace(".","")
+    user_input = user_input.replace("?","")
+    user_input = user_input.replace(",","")
     bag = array([bag_of_words(user_input, words)])
     check_bag = len(list(set(bag[0])))
     results = model.predict(bag)
@@ -148,6 +151,8 @@ def chat(user_input):
     print("tags_history",tags_history)
     print("doctors",doctors)
 
+    if tag == "name" and max_ * 100 > 70:
+        tags_history.append("")
 
     if ( len(tags_history) >= 1):
         if tag == "name" and tags_history[len(tags_history) - 1] == "doctor_appointment_reject" and ":" not in user_input:

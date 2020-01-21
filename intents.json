@@ -16,7 +16,7 @@
 		"responses": [ "How may I help you sir?"]
 	},		
 	{"tag": "goodbye",
-	"patterns": [ "now i am going","cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day","allahafiz","allah hafiz","khuda hafiz","khudahafiz","talk to you later"],
+	"patterns": ["ok now i am leaving","i want to go now", "now i am going","cya", "See you later", "Goodbye","good bye" ,"I am Leaving", "Have a Good day","allahafiz","allah hafiz","khuda hafiz","khudahafiz","talk to you later"],
 	"responses": [ "Sad to see you go :(", "Talk to you later", "Goodbye!"]
 	},
 	{"tag": "name",

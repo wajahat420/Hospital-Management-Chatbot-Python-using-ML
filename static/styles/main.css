@@ -100,7 +100,9 @@ a:hover{
   background-color:  rgba(187, 187, 187, 0) !important;
 }
 h4{
-  padding-bottom: 10px;
   font-size: 1.3em !important;
   cursor: pointer;
+}
+.side-right ul {
+  /* padding-bottom: 5px; */
 }

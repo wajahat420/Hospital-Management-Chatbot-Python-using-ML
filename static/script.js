@@ -66,6 +66,7 @@ function voiceRecord() {
       url: "/speechToText",
       type: "GET",
   }).done((res) => {
+  
       messages.push(res.ques);
       messages.push(res.ans);
 
@@ -74,7 +75,7 @@ function voiceRecord() {
       
 
       id.scrollTop = id.scrollHeight;
-      // console.log("message", messages)
+      console.log("message", messages)
 
   });
   $.ajax({

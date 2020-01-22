@@ -1,5 +1,5 @@
 function showDetails(itemID){
-  ids = ["h4-1","h4-2","h4-3","h4-4","h4-5","h4-6","h4-7"]
+  ids = ["h4-1","h4-2","h4-3","h4-5","h4-6","h4-7"]
   id = document.getElementById(itemID)
 
   // console.log("id",itemID)
@@ -11,7 +11,7 @@ function showDetails(itemID){
         otherId = document.getElementById(ids[i])
         if(itemID != ids[i]){
             // console.log("ids[i]",ids[i])
-            otherId.className  = "d-none"
+            otherId.className  = " d-none"
           }
       }
     }

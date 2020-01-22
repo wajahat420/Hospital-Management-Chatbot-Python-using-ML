@@ -8,9 +8,17 @@ import pyttsx3
 
 reports = [
     {
-    "name" : "haider",
+    "name" : "anas",
     "report-type":"blood"
-    }   
+    } ,
+        {
+    "name" : "saad",
+    "report-type":"blood"
+    } ,
+        {
+    "name" : "wajahat",
+    "report-type":"blood"
+    } 
 ]
 textAns = ""
 

@@ -50,7 +50,8 @@ input {
 }
 .right > * {
   float: right;
-  background-color: rgb(42, 37, 37);
+  background-color: 
+  ;
 }
 form > div {
   display: inline-block;

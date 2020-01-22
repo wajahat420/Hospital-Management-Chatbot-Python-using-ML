@@ -65,7 +65,7 @@ function voiceRecord() {
 
   $.ajax({
       url: "/speechToText",
-      type: "GET",
+      type: "GET"
   }).done((res) => {
   
     console.log("before")

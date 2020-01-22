@@ -40,7 +40,7 @@
    {
     "tag" : "waiting_time",
     "patterns" : ["how much time is for my turn","how much time i have to wait for the number","when will my number come","when will my turn come","how much time i have to wait for my turn","how many hours i have to wait ","tell me the time from now for which i have to wait for it","tell me when my turn will come","please guide me about when my turn will come","when will i get my turn","please do favour and tell me the remaining time from now","tell me remaining time"],
-     "responses" : [ "Dear User, The current number running is 100 your turn will come in an hour.","Sir, you have to wait only one hour"]
+     "responses" : [ "Dear User, The current number running is 100 your turn will come in an hour.","Sir, you have to wait only one hour","You have to wait 50-60 mins"]
      },
    {
     "tag" : "doctor_appointment_asking",
@@ -76,6 +76,11 @@
 	"tag" : "asking_test",
 	"patterns" : [ "i want to perform test","what tests are available in the laboratory","please guide me i want to take test","i want to do test","my uncle will come for test is this test available","what types of tests are available","guide me about test"],
 	"responses" : [ "Test available are the following: </br> blood </br> hepatitis </br> hemoglobin </br> You may come any time for your test."]
+  },
+  {
+	"tag" : "asking_report",
+	"patterns" : [ "tell me whether my report is ready or not","please check that my report is ready or not","my report is ready?","is my report come in the lab?","from whom to ask about report","tell me about my report","my report has come?","from where i have to collect my report"],
+	"responses" : [ "Any info about report and lab is available on the page of Laboratory","For this you should check our Laboratory page"]
   }
 ]
 }

@@ -10,7 +10,7 @@ reports = [
     {
     "name" : "haider",
     "report-type":"blood"
-    }
+    }   
 ]
 textAns = ""
 
@@ -46,7 +46,7 @@ def speechToText():
 @app.route("/textTospeech", methods=["POST"])
 def textTospeech():
     # print("req method",request.method)
-    print("textTospeech1")
+    print("textTospeech")
 
     question = request.form['text']
 
@@ -68,7 +68,7 @@ def speak():
     engine.say(str(textAns))
     engine.runAndWait()
     textAns = ""
-    return ""
+    return "hey"
 
 @app.route("/get_report", methods=["GET"])
 def confirm():

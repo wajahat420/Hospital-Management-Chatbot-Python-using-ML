@@ -17,6 +17,7 @@ tags_history = []
 appointment = ["You may take appointment from 2pm-4pm Do you want to confirm ?","You may take appointment from 2pm-4pm, confirm it please."]
 available_tests = ["blood","hepatitis","hemoglobin"]
 confirm_words = ["ok","done","yes","confirm"]
+lastNumber = 150
 confirm = False
 recent_doctor = ""
 
@@ -170,6 +171,7 @@ def chat(user_input):
 
     global confirm
     global recent_doctor
+    global lastNumber
 
     split_for_name = user_input.split(":")
     string = " "
@@ -185,7 +187,8 @@ def chat(user_input):
 
             if "name" in user_input and len(split_for_name) >= 2 and join_string not in  doctors[recent_doctor]["appointments"] :
                 doctors[recent_doctor]["appointments"].append(join_string)
-                return "Your Appointment is confirmed, Appoinment number = 150 </br> To take another appointment follow above instructions to write name." 
+                lastNumber += 1
+                return "Your Appointment is confirmed, Appoinment number = {} </br> To take another appointment follow above instructions to write name.".format(lastNumber)
             elif "name" in user_input and len(split_for_name) >= 2 and join_string in  doctors[recent_doctor]["appointments"] :
                 return "You have already taken an appointmnt please use another name to book your appointment."
         

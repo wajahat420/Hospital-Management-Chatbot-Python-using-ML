@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 from chatbot import *
-import speech_recognition as sr
+# import speech_recognition as sr
 import pyttsx3
 
 
@@ -23,34 +23,34 @@ reports = [
 textAns = ""
 
 
-def speechh():     
-    r = sr.Recognizer()
+# def speechh():     
+#     r = sr.Recognizer()
 
-    with sr.Microphone() as source:
-        # print("Speak Anything :")
-        audio = r.listen(source)
-        try:
-            text = r.recognize_google(audio)
-            return text
-        except:
-            return "Sorry could not recognize what you said"
+#     with sr.Microphone() as source:
+#         # print("Speak Anything :")
+#         audio = r.listen(source)
+#         try:
+#             text = r.recognize_google(audio)
+#             return text
+#         except:
+#             return "Sorry could not recognize what you said"
 
-@app.route("/speechToText",methods = ["GET"])
-def speechToText():
-    # try :
-    print("req method",request.method)
-    question = speechh()
+# @app.route("/speechToText",methods = ["GET"])
+# def speechToText():
+#     # try :
+#     print("req method",request.method)
+#     question = speechh()
 
-    getAnswer = chat(question)
+#     getAnswer = chat(question)
 
-    engine = pyttsx3.init() 
-    engine.say(str(getAnswer))
-    engine.runAndWait()
+#     engine = pyttsx3.init() 
+#     engine.say(str(getAnswer))
+#     engine.runAndWait()
 
-    global textAns
-    textAns = getAnswer
+#     global textAns
+#     textAns = getAnswer
 
-    return {"ques":question,"ans":getAnswer}
+#     return {"ques":question,"ans":getAnswer}
     # except:
     #     print("not working properly")
     #     return "not working properly"

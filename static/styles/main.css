@@ -114,10 +114,7 @@ h4 {
   cursor: pointer;
 }
 
-#home a {
-  font-weight: 600;
-  text-decoration: underline;
-}
+
 a:hover {
   color: white;
   text-decoration: none;
@@ -163,13 +160,7 @@ h1 {
   margin-top: 70px !important;
   text-align: center;
 }
-.instructions {
-  /* margin-left: 80px !important; */
-  /* display: inline-block; */
-  background-color: #c7444f;
-  margin: 10px auto !important;
-  border: 2px solid black;
-}
+
 .side-left,
 .side-right {
   display: inline-block;
@@ -183,10 +174,7 @@ span {
 ul {
   padding: 50px auto;
 }
-#instructions a {
-  font-weight: 600;
-  text-decoration: underline;
-}
+
 a:hover {
   color: white;
   text-decoration: none;

@@ -64,7 +64,7 @@
   },
 	{
 	"tag" : "patient_room",
-	"patterns" : [ "tell me his room?","on which floor?","left or right?","room number?","room no?","which corridor?"],
+	"patterns" : ["where is the room of patient","on which floor patient is","tell me where patient is?", "where is patient room","tell me his room?","on which floor?","left or right?","room number?","room no?","which corridor?"],
 	"responses" : [ "Yes you may meet him upstairs 2nd floor 3rd room to the left"]
   },
   {

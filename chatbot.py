@@ -31,7 +31,7 @@ doctors = {
     "appointments" : [],
     },
     "general physician" : {
-    "timings" : "Sat and Sun     3pm-9pm",
+    "timings" : "Sat and Sun 3pm-9pm",
     "appointments" : [],
     }
 }
@@ -152,8 +152,8 @@ def chat(user_input):
     print("tags_history",tags_history)
     print("doctors",doctors)
 
-    if tag == "name" and max_ * 100 > 70:
-        tags_history.append("")
+    if tag == "name" and max_ * 100 > 70 and ":" not in user_input:
+        tags_history.append("name")
 
     if ( len(tags_history) >= 1):
         if tag == "name" and tags_history[len(tags_history) - 1] == "doctor_appointment_reject" and ":" not in user_input:

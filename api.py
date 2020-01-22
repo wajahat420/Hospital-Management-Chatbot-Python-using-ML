@@ -34,6 +34,11 @@ def speechToText():
     question = speechh()
 
     getAnswer = chat(question)
+
+    engine = pyttsx3.init() 
+    engine.say(str(getAnswer))
+    engine.runAndWait()
+
     global textAns
     textAns = getAnswer
 
@@ -51,10 +56,15 @@ def textTospeech():
     question = request.form['text']
 
     getAnswer = chat(question)
-    global textAns
-    textAns = getAnswer
 
-    return textAns
+    engine = pyttsx3.init() 
+    engine.say(str(getAnswer))
+    engine.runAndWait()
+
+    # global textAns
+    # textAns = getAnswer
+
+    return getAnswer
     # engine = pyttsx3.init() 
     # engine.say(str(question))
     # engine.runAndWait()

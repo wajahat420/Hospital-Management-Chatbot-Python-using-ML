@@ -51,12 +51,14 @@ function  myFunction() {
             $(".message").append(html);
             id.scrollTop = id.scrollHeight ;
         }
+        // Speak answer 
+          // $.ajax({
+          //   url: "/speak",
+          //   type: "GET",
+          // }).done((res)=>{
+          //   console.log("no worries")
+          // })
     });
-  // Speak answer 
-    $.ajax({
-      url: "/speak",
-      type: "GET",
-    })
 }
 
 function voiceRecord() {
@@ -75,23 +77,23 @@ function voiceRecord() {
 
       var html1 = "<div class='right'>	<div>" + res.ques + " </div>	</div>";
       $(".message").append(html1);
-      
+      var html2 = "<div class='left'>	<div> " + messages[messages.length - 1] + " </div>	</div>";
+      $(".message").append(html2);
 
       id.scrollTop = id.scrollHeight;
 
   });
-  $.ajax({
-      url: "/speak",
-      type: "GET",
-  }).done(() => {
+//   $.ajax({
+//       url: "/speak",
+//       type: "GET",
+//   }).done((res) => {
 
-    var html2 = "<div class='left'>	<div> " + messages[messages.length - 1] + " </div>	</div>";
-    $(".message").append(html2);
 
-    id.scrollTop = id.scrollHeight;
-    // console.log("message", messages)
 
-});
+//     id.scrollTop = id.scrollHeight;
+//     // console.log("message", messages)
+
+// });
 
 
 }

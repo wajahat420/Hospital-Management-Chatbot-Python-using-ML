@@ -24,13 +24,21 @@ var messages = [];
 function  myFunction() {
 
   var text = $("#text").val();
+
+  if( messages.length % 2 == 1){
+    return
+  }
   messages.push(text);
-  document.getElementById("text").value = "";
   id = document.getElementById("message")
   // console.log("text",text)
+  document.getElementById("text").value = "";
   if (text == ""){
     return
   }
+  var html = "<div class='right'>	<div>"  + text + " </div>	</div>";
+  $(".message").append(html);
+  id.scrollTop = id.scrollHeight ;
+
   // Speak Question
   $.ajax({
     url: "/textTospeech",
@@ -40,17 +48,20 @@ function  myFunction() {
         messages.push(res);
         // var html = "<div class='right'>	<div>"  + messages[messages.length - 1] + " </div>	</div>";
         // $(".message").append(html);
+        var html = "<div class='left'>	<div>"  + res+ " </div>	</div>";
+        $(".message").append(html);
+
         id.scrollTop = id.scrollHeight ;
 
-        for (i = messages.length - 2; i < messages.length; i++) {
-            if (i % 2 == 1) {
-              var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
-            } else {
-              var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
-            }
-            $(".message").append(html);
-            id.scrollTop = id.scrollHeight ;
-        }
+        // for (i = messages.length - 2; i < messages.length; i++) {
+        //     if (i % 2 == 1) {
+        //       var html = "<div class='left'>	<div>"  + messages[i] + " </div>	</div>";
+        //     } else {
+        //       var html = "<div class='right'>	<div> " + messages[i] + " </div>	</div>";
+        //     }
+        //     $(".message").append(html);
+        //     id.scrollTop = id.scrollHeight ;
+        // }
         // Speak answer 
           // $.ajax({
           //   url: "/speak",
